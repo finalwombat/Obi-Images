@@ -1,0 +1,16 @@
+<div class="container main-slider">
+    <img ng-repeat="image in images" class="image" ng-hide="!isCurrentImageIndex($index)" ng-src="{{ image.name }}" />
+    
+    <a class="arrow prev"  ng-click="prevImage()"></a>
+    <a class="arrow next"  ng-click="nextImage()"></a>
+    <nav class="nav">
+        <div class="wrapper">
+            <ul class="dots">
+                <li class="dot" ng-repeat="image in Images">
+                    <a href="#" ng-class="{'active':isCurrentImageIndex($index)}"
+                      ng-click="setCurrentImageIndex($index);">{{images.name}}</a></li>
+            </ul>
+        </div>
+    </nav>
+    </nav>
+</div>
