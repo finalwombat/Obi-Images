@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="imagesApp">
+    <head>
+        <title>Obi Images</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta charset="UTF-8">
+        
+        <!- load bootstrap and fontawesome via CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css" />   
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#/">Obi Images</a>
+                </div>
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#/gallery"><i class="fa fa-home"></i> Gallery</a></li>
+                    <li><a href="#/contact"><i class="fa fa-home"></i> Contact</a></li>
+                </ul>
+            </div>    
+            </nav>
+        </header>
+        
+        <div class="container">
+            
+            <div ng-view>
+                
+              
+                
+            </div>
+            
+          
+        </div>
+        <script src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.0/angular-route.min.js" ></script>
+        <script src="https://code.angularjs.org/1.5.0/angular-resource.min.js" ></script>
+        <script src="js/app.js" ></script>
+    </body>
+</html>
