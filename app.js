@@ -55,7 +55,13 @@ imagesApp.controller('viewerController', ['$scope', function($scope) {
 }]);
 
 imagesApp.controller('galleryController', ['$scope', function($scope) {
-    
+        $scope.thumbnails = [
+        {name: 'images/19452892101_47e82ed731_o.jpg'},
+        {name: 'images/19442389322_651c6b7580_o.jpg'},
+        {name: 'images/19262527899_ab4dc6f0cc_o.jpg'},
+        {name: 'images/18826333504_393f58eed1_o.jpg'},
+        {name: 'images/19261301330_e28eb5754d_o.jpg'}
+    ];
 }]);
 
 imagesApp.controller('contactController', ['$scope', function($scope) {

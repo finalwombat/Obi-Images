@@ -1,8 +1,8 @@
 <div class="container main-slider">
     <img ng-repeat="image in images" class="image" ng-hide="!isCurrentImageIndex($index)" ng-src="{{ image.name }}" />
     
-    <a class="arrow prev"  ng-click="prevImage()"></a>
-    <a class="arrow next"  ng-click="nextImage()"></a>
+    <button class="slider__arrow slider__arrow--left"  ng-click="prevImage()"></button>
+    <button class="slider__arrow slider__arrow--right"  ng-click="nextImage()"></button>
     <nav class="nav">
         <div class="wrapper">
             <ul class="dots">

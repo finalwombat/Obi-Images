@@ -1,37 +1,127 @@
-.main-slider img {
-    max-width: 100%;
-    max-height: 100%;
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+
 
 body {
     background-color: black;
 }
 
-.navbar{
-    color: yellow;
-}
-.arrow {
-    position: absolute;
-    z-index: 1002;
+h1 {
     display: block;
-    top: 50%;
-    margin-top: -35px;
-    width: 36px;
-    height: 71px;
-    outline: none;
-    cursor: pointer;
+    color: #FCB720;
 }
 
-.arrow.prev {
-    
-    left: 20px;
-    background-image: url(/assets/right-arrow.png);
-    transition: 0.2s linear all;
+a {
+    color: #FFFFFF;
 }
 
-.arrow.next {
-    
-    right: 20px;
-    background-image: url(/assets/left-arrow.png);
-    transition: 0.2s linear all;
+.main-slider {
+    height: 600px;
+}
+.main-slider img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* create the arrows for gallery*/
+.slider__arrow
+{
+   position: absolute;
+   top: 20%;
+   display: block;
+   width: 60px;
+   height: 60px;
+   border: none;
+   border-radius: 50%;
+   background-color: #000000;
+   opacity: 0.7;
+   cursor: pointer;
+}
+
+.slider__arrow:hover,
+.slider__arrow:focus
+{
+   opacity: 1;
+}
+
+.slider__arrow:before,
+.slider__arrow:after
+{
+   content: '';
+   position: absolute;
+   width: 10px;
+   height: 40%;
+   background-color: #FFFFFF;
+}
+
+.slider__arrow:before
+{
+   bottom: 12px;
+}
+
+.slider__arrow:after
+{
+   top: 12px;
+}
+
+.slider__arrow:hover:before,
+.slider__arrow:focus:before,
+.slider__arrow:hover:after,
+.slider__arrow:focus:after
+{
+   background-color: #FCB712;
+}
+
+.slider__arrow--left
+{
+   left: 0.5em;
+}
+
+.slider__arrow--left:before
+{
+   transform: rotate(-40deg);
+   left: 35%;
+}
+
+.slider__arrow--left:after
+{
+   transform: rotate(40deg);
+   left: 35%;
+}
+
+.slider__arrow--right
+{
+   right: 0.5em;
+}
+
+.slider__arrow--right:before
+{
+   transform: rotate(40deg);
+   right: 35%;
+}
+
+.slider__arrow--right:after
+{
+   transform: rotate(-40deg);
+   right: 35%;
+}
+
+.gallery {
+    display:-webkit-flex;
+	display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.gallery:after {
+    flex: auto;
+}
+.gallery img {
+    max-width: 300px;
+    max-height: 200px;
 }
