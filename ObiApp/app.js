@@ -3,6 +3,7 @@ var app = express();
 
 var apiController = require('./controllers/apiController');
 var htmlController = require('./controllers/htmlController');
+var flickrController = require('./controllers/flickrController');
 
 var port = process.env.PORT || 3000;
 
@@ -12,5 +13,6 @@ app.use(express.static(__dirname + '/public'));
 
 htmlController(app);
 apiController(app);
+flickrController(app);
 
 app.listen(port);
