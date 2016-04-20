@@ -19,6 +19,19 @@ imagesApp.config(function($routeProvider) {
     });
 });
 
+//Services
+imagesApp.service('Images', ['$http', function($http) {
+     var self = this;
+     this.getGalleries = function(fn) {
+        $http.get('/galleries').then(function(data) {
+         fn(data.data);
+        }, function(err)
+        {
+            console.log("ERROR", err);
+        })
+     }
+}])
+
 
 
 //Controllers
@@ -64,6 +77,10 @@ imagesApp.controller('galleryController', ['$scope', function($scope) {
     ];
 }]);
 
-imagesApp.controller('contactController', ['$scope', function($scope) {
+imagesApp.controller('contactController', ['$scope', '$http', 'Images', function($scope, $http, Images) {
+  
+  Images.getGalleries(function(data){
+      console.log(JSON.parse(data));
+  })
     
 }]);

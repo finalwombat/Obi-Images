@@ -15,6 +15,8 @@ module.exports = function(app){
         };
      function updateImages(images){
          albums.write(JSON.stringify(images));
+         albums.write(', ');
+         console.log("albums updated");
      }
         
      Flickr.authenticate(flickrOptions, function(err, flickr) {

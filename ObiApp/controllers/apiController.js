@@ -1,8 +1,11 @@
+var fs = require('fs');
+var images = fs.readFileSync(__dirname + '/images.json', 'utf-8');
+
 module.exports = function(app) {
     app.get('/galleries', function(req, res) {
-       //get the galleries from flickr
-       //create thumbnails
-       //return thumbnails 
+        var images = fs.readFileSync(__dirname + '/images.json', 'utf-8');
+        console.log(images);
+        res.json(images);
     });
     
     app.get('/viewer/:id', function(req, res) {
