@@ -30,6 +30,7 @@ imagesApp.service('Images', ['$http', function($http) {
             console.log("ERROR", err);
         })
      }
+     function convertToThumbnail(imgURL)
 }])
 
 
