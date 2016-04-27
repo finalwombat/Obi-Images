@@ -6,7 +6,7 @@ const COLLECTION_NAME = "obiImages";
 
 module.exports = function(app){
     var keys = JSON.parse(fs.readFileSync(__dirname + '../../data/keys.json', 'utf8'));
-    var albums = fs.createWriteStream(__dirname + '/images.json');
+    var albums = fs.createWriteStream(__dirname + '../../public/images/images.json');
     var Flickr = require("flickrapi"),
         flickrOptions = {
             api_key: keys.api_key,

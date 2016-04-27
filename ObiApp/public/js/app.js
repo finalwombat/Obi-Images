@@ -20,80 +20,48 @@ imagesApp.config(function($routeProvider) {
 });
 
 //Services
+
+//keep the state of the current folder
+imagesApp.service('CurrentFolder', [function(){
+    this.currentFolderName = 'featured';
+}])
+
+
+//Images service -- 
 imagesApp.service('Images', ['$http', function($http) {
     
-     var self = this;
-     //Holds the names and images of all galleries
-     this.galleries = [];
-     
-     //Thumbnails for each folder
-     this.thumbnails = [];
-     
-      // the current selected folder and the images that belong to it.
-     this.currentFolder = {};
-     
-     // Get the galleries from the server and assign valuse to service properties
-     // returns true when finished
-     
-     this.init = function(){
+     var self = this;   
         
-        
-        //Get all galleries from server return promise that resolves thumbnail objects for
-        //the galleries page. updates the galleries property aswell
-        var getGalleries = function() {
-            return new Promise(function(resolve, reject){
+     //[Promise] Get all images from server, 
+     this.getThumbnails = function() {
+         return new Promise(function(resolve, reject){
                 
-                $http.get('/galleries').then(function(data) {
-                    
-                    resolve(JSON.parse(data.data));
-                    
-            }, function(err)
-            {
-                console.log("ERROR", err);
-                reject(err);
-            });
-                
-            }); 
-        
-        };
-        
-        //Get the galleries from server than initalise properties
-        getGalleries().then(function(data){
-            console.log('init');
-            setGalleries(data);
-            setCurrentFolder('featured');
-            setThumbnails(self.galleries);
-        })
-         
-     };
-     
-     //set the galleries property 
-     var setGalleries = function(data){
-         console.log('setGalleries')
-         self.galleries = data;
-         console.log(self.galleries);
-     }
-     
-    var setThumbnails = function(data){
-        console.log('setThumbnails');
-        self.thumbnails = data.map(function(gallery){
+             $http.get('/galleries').then(function(data) {
+                 var thumbnails = JSON.parse(data.data).map(function(gallery){
                             return ({title: gallery.title, 
                                     thumbnail: getThumbnailUrl(gallery.photos[0])});
+                 });
+                 resolve(thumbnails);
+                    
+         }, function(err)
+         {
+             console.log("ERROR", err);
+             reject(err);
          });
-          console.log(self.thumbnails);
-    }
+                
+         }); 
+        
+     };
      
-     //Set the current folder to be viewed in the viewer
-     var setCurrentFolder = function(title){
-         console.log('setCurrentFolder');
-         console.log(self.galleries);
-         self.currentFolder.title = title;
-         album = self.galleries.filter(function(album){
-             return album.title === title;
+     //[Promise] Set the current folder to be viewed in the viewer
+     this.getAlbumImages = function(title){
+         return new Promise(function(resolve, reject){
+             var url = '/album' + title;
+             $http.get(url).then(function(data){
+                    resolve(JSON.parse(data.data));
          })
-         self.currentFolder.photos = album[0].photos;
-         console.log('SetCurrentFolder after');
-         console.log(self.currentFolder);
+       
+     })
      }
      
      //create thumbnail version of url
@@ -101,7 +69,7 @@ imagesApp.service('Images', ['$http', function($http) {
          return url.replace('.jpg', '_q.jpg');
      }
   
-    this.test = 'test';
+    
 }])
 
 
@@ -145,8 +113,12 @@ imagesApp.controller('viewerController', ['$scope', 'Images', function($scope, I
 
 imagesApp.controller('galleryController', ['$scope', 'Images', function($scope, Images) {
      
-     Images.init();
-     console.log(Images)
+     Images.getThumbnails().then(function(data){
+         console.log(data);
+     });
+     Images.getAlbumImages('featured').then(function(data){
+         console.log(data);
+     })
      /*Images.getGalleries().then(function(galleries){
       $scope.thumbnails = galleries;
       $scope.$apply();
