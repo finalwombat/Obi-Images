@@ -1,4 +1,5 @@
 <div class="container main-slider">
+    <p>Name: {{ name }}</p>
     <img ng-repeat="image in images" class="image" ng-hide="!isCurrentImageIndex($index)" ng-src="{{ image.name }}" />
     
     <button class="slider__arrow slider__arrow--left"  ng-click="prevImage()"></button>

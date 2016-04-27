@@ -1,5 +1,12 @@
 <h1>Gallery</h1>
 
-<div class="gallery">
-    <img ng-repeat="thumbnail in thumbnails" class="thumbnail" ng-click="selectFolder" ng-src="{{ thumbnail.name }}"/>
+<div class="gallery" >
+    <div ng-repeat="thumbnail in thumbnails"> 
+        <a  ng-click="selectFolder(thumbnail.name)" >
+            <img class="thumbnail"
+                ng-src="{{ thumbnail.thumbnail }}" alt="{{ thumbnail.name}}"/>
+            <p>{{ thumbnail.name }}</p>
+        </a>
+      </div>
+        
 </div>
