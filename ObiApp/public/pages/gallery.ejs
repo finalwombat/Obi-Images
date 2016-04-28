@@ -2,10 +2,10 @@
 
 <div class="gallery" >
     <div ng-repeat="thumbnail in thumbnails"> 
-        <a  ng-click="selectFolder(thumbnail.name)" >
+        <a  href="/#/" ng-click="selectFolder(thumbnail.title)" >
             <img class="thumbnail"
-                ng-src="{{ thumbnail.thumbnail }}" alt="{{ thumbnail.name}}"/>
-            <p>{{ thumbnail.name }}</p>
+                ng-src="{{ thumbnail.thumbnail }}" alt="{{ thumbnail.title}}"/>
+            <p>{{ thumbnail.title }}</p>
         </a>
       </div>
         

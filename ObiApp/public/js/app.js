@@ -23,7 +23,7 @@ imagesApp.config(function($routeProvider) {
 
 //keep the state of the current folder
 imagesApp.service('CurrentFolder', [function(){
-    this.currentFolderName = 'featured';
+    this.name = 'featured';
 }])
 
 
@@ -58,7 +58,12 @@ imagesApp.service('Images', ['$http', function($http) {
          return new Promise(function(resolve, reject){
              var url = '/album' + title;
              $http.get(url).then(function(data){
-                    resolve(JSON.parse(data.data));
+                    //convert albums urls to the correct size
+                    var album = JSON.parse(data.data);
+                    var photos = album.photos.map(function(photo){
+                        return getViewerUrl(photo);
+                    })
+                    resolve(photos);
          })
        
      })
@@ -68,6 +73,11 @@ imagesApp.service('Images', ['$http', function($http) {
      var getThumbnailUrl = function(url){
          return url.replace('.jpg', '_q.jpg');
      }
+     
+     //create viewer version of url
+     var getViewerUrl = function(url){
+         return url.replace('.jpg', '_h.jpg');
+     }
   
     
 }])
@@ -76,14 +86,14 @@ imagesApp.service('Images', ['$http', function($http) {
 
 //Controllers
 
-imagesApp.controller('viewerController', ['$scope', 'Images', function($scope, Images) {
-    $scope.images = [
-        {name: 'images/19452892101_47e82ed731_o.jpg'},
-        {name: 'images/19442389322_651c6b7580_o.jpg'},
-        {name: 'images/19262527899_ab4dc6f0cc_o.jpg'},
-        {name: 'images/18826333504_393f58eed1_o.jpg'},
-        {name: 'images/19261301330_e28eb5754d_o.jpg'}
-    ];
+imagesApp.controller('viewerController', ['$scope', 'Images', 'CurrentFolder', function($scope, Images, CurrentFolder) {
+    
+    $scope.name = CurrentFolder.name;
+    
+    Images.getAlbumImages($scope.name).then(function(data){
+        $scope.images = data;
+        $scope.$apply();
+    })
     
     $scope.currentIndex = 0;
     
@@ -105,17 +115,18 @@ imagesApp.controller('viewerController', ['$scope', 'Images', function($scope, I
             --$scope.currentIndex : $scope.images.length -1;
     };
     
-    $scope.name = Images.currentFolder.name;
     
 }]);
 
 
 
-imagesApp.controller('galleryController', ['$scope', 'Images', function($scope, Images) {
+imagesApp.controller('galleryController', ['$scope', 'Images', 'CurrentFolder', function($scope, Images, CurrentFolder) {
      
      Images.getThumbnails().then(function(data){
-         console.log(data);
+         $scope.thumbnails = data;
+         $scope.$apply();
      });
+     /*
      Images.getAlbumImages('featured').then(function(data){
          console.log(data);
      })
@@ -126,11 +137,10 @@ imagesApp.controller('galleryController', ['$scope', 'Images', function($scope, 
   
     $scope.galleries = Images.galleries;
     
-  
-    $scope.selectFolder = function(name){
-        Images.setCurrentFolder(name);
-        
-    }*/
+  */
+    $scope.selectFolder = function(title){
+        CurrentFolder.name = title;
+    }
 }]);
 
 imagesApp.controller('contactController', ['$scope', 'Images', function($scope, Images) {
