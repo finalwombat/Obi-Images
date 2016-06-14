@@ -143,9 +143,15 @@ imagesApp.controller('galleryController', ['$scope', 'Images', 'CurrentFolder', 
     }
 }]);
 
-imagesApp.controller('contactController', ['$scope', 'Images', function($scope, Images) {
+imagesApp.controller('contactController', ['$scope', 'Images', 'CurrentFolder', function($scope, Images, CurrentFolder) {
     
- 
+ // Using the contact page for testing
+    $scope.name = CurrentFolder.name;
+    
+    Images.getAlbumImages($scope.name).then(function(data){
+        $scope.images = data;
+        $scope.$apply();
+    })
   
     
 }]);

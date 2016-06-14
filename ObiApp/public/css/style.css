@@ -8,7 +8,7 @@
 
 
 body {
-    background-color: white;
+    background-color: black;
 }
 
 h1 {
@@ -22,10 +22,13 @@ a {
 
 .main-slider {
     height: 600px;
+    display: flex;
 }
 .main-slider img {
     max-width: 100%;
     max-height: 100%;
+    align-self: center;
+    overflow: hidden;
 }
 
 /* create the arrows for gallery*/
@@ -124,4 +127,17 @@ a {
 .gallery img {
     max-width: 300px;
     max-height: 200px;
+}
+
+.montage {
+    justify-content: space-around;
+    display:flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.montage img {
+     max-width: 100%;
+     height: auto;
+     margin-top: 10px;
 }

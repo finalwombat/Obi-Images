@@ -1,0 +1,54 @@
+Current goal: Select viewer folder from galleries
+    Done: Works pretty well -- Takes a little bit for the first image to load so it would be good to have some
+            sort of fade effect or something. -- Images also need to be presented better
+Current goal: Convert image urls to large size
+    Done: Imgaes are still all differnet sizes though...not sure how to deal with that
+
+Current goal: Get the viewer page working with whatever the current album is
+    Done: Images are too small though
+    
+Current goal: Make the galleries page work again with the promise data.
+    Done: It works - there is some problem with reloading the page but I will see to that later.
+    
+Current goal: Find a way to initalise the Images service before it is used.
+    Update: Images service now calls the server for galleries and albums. 
+
+Current goal: Make an onClick function that goes to the viewer when user clicks on gallery thumbnail and displays that 
+              folders images.
+    Update: Going to comment and organise the images service first to make it easier to work with.
+    Update: It appears that the images service had a different scope in each controller. Not sure how to procede at the 
+            moment.
+    Update: Got a bit off track... refactored the Images service. It now has an init function that initalises all properties. 
+            Now I just have to figure out how to run init and wait for it to finish before using the Images service.
+
+Current goal: Move the functionality from contact to galleries and make gallery thumbnails links.
+    Done: done!
+    
+Current goal: Create a galleries object in the images service from the returned flickr json
+    update: Done but its not working because of async issues - making it return a promise instead
+    Done: I needed to call $scope.$apply() after I assigned the result for some reason. 
+    
+Current goal: Write a function to convert full size images to thumbnail on the client sided
+    Done: done! 
+
+Current goal: fix flicker controller bug - write correct json to file
+    update: I am having a lot of trouble getting the promise.all function to work. I will make the get tree a 
+            promise and put the promise.all method inside it's then method. Hopefuly this will work or atleast 
+            make it easier to debug. 
+    Done: updated to use promises for the get tree function as well which is better code that is easier to read.
+          Works now... I was passing my array inside another array for some reason -- Promise.all([promises]) 
+
+Current goal: turn the images retrievel into a service
+    Done: I have found a bug in the flickrcontroller. It is writing invalid json to the file
+
+Current goal: Have the front end retrieve the images in json format from the server.
+    Done: json object is returned and console.loged.
+
+
+
+TO DO LIST ----------------------
+
+    Pre load image viewer page with a loading icon displayed
+    Fix image sizes
+    test images page designs
+    write tests
