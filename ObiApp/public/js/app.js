@@ -76,7 +76,7 @@ imagesApp.service('Images', ['$http', function($http) {
      
      //create viewer version of url
      var getViewerUrl = function(url){
-         return url.replace('.jpg', '_h.jpg');
+         return url.replace('.jpg', '_z.jpg');
      }
   
     
