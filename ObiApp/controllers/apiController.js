@@ -1,12 +1,12 @@
 var fs = require('fs');
-var images = fs.readFileSync(__dirname + '../../public/images/images.json', 'utf-8');
+var images = fs.readFileSync( './controllers/images.json', 'utf-8');
 
 module.exports = function(app) {
     app.get('/galleries', function(req, res) {
         //console.log(images);
         res.json(images);
     });
-    
+
     app.get('/album:title', function(req, res) {
         imagesObj = JSON.parse(images);
         console.log(req.params.title);

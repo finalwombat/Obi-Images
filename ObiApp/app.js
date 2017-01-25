@@ -13,6 +13,6 @@ app.use(express.static(__dirname + '/public'));
 
 htmlController(app);
 apiController(app);
-flickrController(app);
+//flickrController(app);
 
 app.listen(port);
