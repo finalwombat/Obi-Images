@@ -15,4 +15,6 @@ htmlController(app);
 apiController(app);
 //flickrController(app);
 
-app.listen(port);
+app.listen(port, function(){
+  console.log('app listening on port:', port);
+});
