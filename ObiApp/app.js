@@ -5,7 +5,7 @@ var apiController = require('./controllers/apiController');
 var htmlController = require('./controllers/htmlController');
 var flickrController = require('./controllers/flickrController');
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
