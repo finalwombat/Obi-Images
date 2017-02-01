@@ -1,13 +1,25 @@
 module.exports = function(app) {
     app.get('/', function(req, res) {
-        res.render('index');
+
+      var currentPage = 'home';
+      res.render('index', {
+        currentPage: currentPage
+      });
     });
 
     app.get('/gallery', function(req, res){
-      res.render('gallery.ejs')
+
+      var currentPage = 'gallery';
+      res.render('gallery.ejs', {
+        currentPage: currentPage
+      });
     });
 
     app.get('/contact', function(req, res){
-      res.render('contact.ejs')
+
+      var currentPage = 'contact'
+      res.render('contact.ejs', {
+        currentPage: currentPage
+      });
     });
 }
