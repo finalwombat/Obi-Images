@@ -1,25 +1,32 @@
+var fs = require('fs');
+
+
 module.exports = function(app) {
     app.get('/', function(req, res) {
 
-      var currentPage = 'home';
+      var gallery = getGalleryImages();
+      console.log('gallery: ', gallery[0]);
       res.render('index', {
-        currentPage: currentPage
+        gallery: gallery[0]
       });
     });
 
     app.get('/gallery', function(req, res){
-
-      var currentPage = 'gallery';
-      res.render('gallery.ejs', {
-        currentPage: currentPage
-      });
+      res.render('gallery.ejs');
     });
 
     app.get('/contact', function(req, res){
-
-      var currentPage = 'contact'
-      res.render('contact.ejs', {
-        currentPage: currentPage
-      });
+      res.render('contact.ejs');
     });
+}
+
+function getGalleryImages(galleryName){
+  var images = fs.readFileSync( './controllers/images.json', 'utf-8');
+  if(!galleryName){galleryName = 'featured'};
+
+  var gallery = JSON.parse(images);
+  var album = gallery.filter(function(album){
+      return album.title === galleryName;
+  })
+  return album;
 }
