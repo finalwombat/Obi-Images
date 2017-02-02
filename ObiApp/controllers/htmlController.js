@@ -22,6 +22,14 @@ module.exports = function(app) {
       res.render('contact.ejs');
     });
 
+    app.get('/login', function(req, res){
+      res.render('login.ejs');
+    });
+
+    app.get('/admin', function(req, res){
+      res.render('admin.ejs');
+    });
+
     app.get('/:galleryName', function(req, res){
       var gallery = getGalleryImages(req.params.galleryName);
       console.log(gallery);
