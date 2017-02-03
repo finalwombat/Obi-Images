@@ -18,7 +18,9 @@ module.exports = function(app) {
     });
 
     app.get('/update/FlickerImages', function(req, res){
-      flickrController(app);
-      res.redirect('/gallery');
+      flickrController(app, function(){
+        res.redirect('/gallery');
+      });
+
     })
 }

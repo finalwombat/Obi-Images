@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var fs = require("fs");
 const COLLECTION_NAME = "WR Photography";
 
-module.exports = function(app){
+module.exports = function(app, callback){
     var keys = JSON.parse(fs.readFileSync('../ObiApp/data/keys.json', 'utf8'));
     var albums = fs.createWriteStream('../ObiApp/public/images/images.json');
     var Flickr = require("flickrapi"),
@@ -35,6 +35,7 @@ module.exports = function(app){
      function updateImages(images){
          albums.write(JSON.stringify(images));
          console.log("albums updated");
+         if(callback){callback();}
      }
 
      // [Promise] Gets the tree collections tree and returns an array of albums
