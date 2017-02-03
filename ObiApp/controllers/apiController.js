@@ -1,5 +1,6 @@
 var fs = require('fs');
 var images = fs.readFileSync( './controllers/images.json', 'utf-8');
+var flickrController = require('./flickrController');
 
 module.exports = function(app) {
     app.get('/galleries', function(req, res) {
@@ -15,4 +16,9 @@ module.exports = function(app) {
         })
         res.json(JSON.stringify(album[0]));
     });
+
+    app.get('/update/FlickerImages', function(req, res){
+      flickrController(app);
+      res.redirect('/gallery');
+    })
 }
