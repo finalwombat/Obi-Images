@@ -1,0 +1,17 @@
+<div class="gallery-h centered">
+  <div class="nav">
+      <a href="#" class="prev icon4-leftarrow23"></a>
+      <a href="#" class="next icon4-chevrons"></a>
+  </div>
+    <div class="gallery clearfix">
+      <div class="container">
+          <% gallery.photos.forEach(function(image) { %>
+            <div class="img">
+              <a href=<%= image %> rel="gallery">
+                <img class="lazy" data-original=<%= image %> alt=""  >
+              </a>
+            </div>
+          <% }); %>
+        </div>
+    </div>
+</div>

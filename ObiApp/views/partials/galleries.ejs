@@ -1,0 +1,24 @@
+<div class="gallery-albums grid">
+
+    <div class="albums clearfix cols-4">
+
+      <% thumbnails.forEach(function(thumbnail){ %>
+        <div class="album size-regular filter-indoors filter-models">
+
+            <div class="album-cont">
+              <img class="lazy" data-original=<%= thumbnail.img %> alt="" data-width="475" data-height="370">
+                <a href=<%=  thumbnail.title %> class="overlay">
+                  <h5><%= thumbnail.title %></h5>
+                  <span class="love icon1-heart-empty"></span>
+                  <span class="love-2 icon1-heart"></span>
+                </a>
+
+            </div>
+
+        </div>
+      <% }); %>
+
+
+    </div>
+
+</div>
