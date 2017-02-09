@@ -1,7 +1,7 @@
 {
   "name": "obiimages",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "Photography website using flickrapi to manage and serve images",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
