@@ -51,38 +51,6 @@ $(document).ready(function() {
 					masonry_init($(".gallery-images .images"), ".img");
 				}
 
-			// Horizontal - Normal
-				if($(".gallery-h.normal").length > 0) {
-
-					$(".gallery-h.normal .container .img a").each(function(index, el) {
-
-						var img = $(this).find('img'),
-							img_h = $(this).parent().height(),
-							img_o_w = img.attr('data-width'),
-							img_o_h = img.attr('data-height'),
-							img_c_w = img_h*img_o_w/img_o_h;
-
-						img.width(img_c_w);
-
-						$(this).width(img_c_w);
-					});
-
-					var total_width = 0;
-
-					$('.gallery-h.normal .container .img').each(function(index, el) {
-						total_width += $(this).width() + 30;
-					});
-
-					total_width -= 29;
-
-					$(".gallery-h.normal .container").width(total_width);
-
-					$(".gallery-h.normal .gallery").niceScroll({
-						cursoropacitymax: 0,
-						mousescrollstep: 60
-					});
-				}
-
 			// Horizontal - Centered
 				if($(".gallery-h.centered").length > 0) {
 
