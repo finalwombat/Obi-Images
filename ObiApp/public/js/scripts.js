@@ -23,27 +23,6 @@ $(document).ready(function() {
 
 		// Gallery
 
-			// Fullscreen Slideshow
-				if($(".full-screen.flexslider.normal-nav, .full-screen.flexslider.no-nav").length > 0) {
-
-					var home_f_s_slideshow_speed = 6000,
-						home_f_s_animation_speed = 2000;
-
-
-					$(".full-screen.flexslider.normal-nav, .full-screen.flexslider.no-nav").flexslider({
-
-					    prevText: "",
-					    nextText: "",
-					    animation: 'fade',
-					    easing: "linear",
-					    slideshow: true,
-					    slideshowSpeed: home_f_s_slideshow_speed,
-					    animationSpeed: home_f_s_animation_speed,
-					    controlNav: false,
-					    directionNav: false
-					});
-				}
-
 			// Slideshow - Vertical & Horizontal Nav
 				if($(".full-screen.flexslider.vertical-nav, .full-screen.flexslider.horizontal-nav").length > 0) {
 
