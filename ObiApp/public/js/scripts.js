@@ -51,21 +51,6 @@ $(document).ready(function() {
 					masonry_init($(".gallery-images .images"), ".img");
 				}
 
-			// Masonry
-				if($(".gallery-images.masonry").length > 0) {
-
-					$(".gallery-images.masonry img").each(function(index, el) {
-
-						var o_width = $(this).attr('data-width'),
-							o_height = $(this).attr('data-height'),
-							c_width = $(this).width();
-
-						$(this).height(c_width*o_height/o_width);
-					});
-
-					masonry_init($(".gallery-images .images"), ".size-regular");
-				}
-
 			// Horizontal - Normal
 				if($(".gallery-h.normal").length > 0) {
 
