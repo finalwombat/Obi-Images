@@ -475,60 +475,6 @@ $(document).ready(function() {
 		}
 
 
-	// Fullscreen Slideshow Functions
-
-		// Navigation Controls - Previous
-		$(".full-screen.flexslider .nav .prev").click(function(event) {
-			event.preventDefault();
-
-			$(".full-screen.flexslider").flexslider('prev');
-
-			$(".full-screen.flexslider .pause").fadeOut(200,function(){
-				$(".full-screen.flexslider .play").fadeIn(200);
-			});
-		});
-
-		// Navigation Controls - Next
-		$(".full-screen.flexslider .nav .next").click(function(event) {
-			event.preventDefault();
-
-			$(".full-screen.flexslider").flexslider('next');
-
-			$(".full-screen.flexslider .pause").fadeOut(200,function(){
-				$(".full-screen.flexslider .play").fadeIn(200);
-			});
-		});
-
-		// Navigation Controls - Play
-		$(".full-screen.flexslider .nav .play").click(function(event) {
-			event.preventDefault();
-
-			$(".full-screen.flexslider").flexslider('play');
-
-			$(this).fadeOut(200,function(){
-				$(".full-screen.flexslider .pause").fadeIn(200);
-			});
-		});
-
-		// Navigation Controls - Pause
-		$(".full-screen.flexslider .nav .pause").click(function(event) {
-			event.preventDefault();
-
-			$(".full-screen.flexslider").flexslider('pause');
-
-			$(this).fadeOut(200,function(){
-				$(".full-screen.flexslider .play").fadeIn(200);
-			});
-		});
-
-		// Navigation Controls - Fullscreen
-		$(".full-screen.flexslider .nav .full").click(function(event) {
-			event.preventDefault();
-
-			toggleFullScreen(document.body);
-		});
-
-
 /*==========================================================================================================================================
 /*==========================================================================================================================================
 	Header
