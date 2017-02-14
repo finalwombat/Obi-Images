@@ -37,22 +37,6 @@ $(document).ready(function() {
 					masonry_init($(".gallery-albums .albums"), ".gallery-albums .album");
 				}
 
-			// Albums - Masonry
-				if($(".gallery-albums.masonry").length > 0) {
-
-					$(".gallery-albums.masonry .album-cont img").each(function(index, el) {
-
-						var o_width = $(this).attr('data-width'),
-							o_height = $(this).attr('data-height'),
-							c_width = $(this).width();
-
-						$(this).height(c_width*o_height/o_width);
-					});
-
-					// Initialization
-					masonry_init($(".gallery-albums .albums"), ".gallery-albums .album.size-regular");
-				}
-
 			// Grid
 				if($(".gallery-images.grid").length > 0) {
 
