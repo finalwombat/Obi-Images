@@ -6,7 +6,7 @@ var path = require("path");
 const COLLECTION_NAME = "WR Photography";
 
 module.exports = function(app, callback){
-    var keys = JSON.parse(fs.readFileSync(path.join(__dirname, '../ObiApp/data/keys.json'), 'utf8'));
+    var keys = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/keys.json'), 'utf8'));
     var albums = fs.createWriteStream('./images.json');
     var Flickr = require("flickrapi"),
         flickrOptions = {
