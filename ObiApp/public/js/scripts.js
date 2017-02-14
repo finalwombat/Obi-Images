@@ -997,27 +997,6 @@ $(document).ready(function() {
 ============================================================================================================================================
 ============================================================================================================================================*/
 
-	// About Me
-		if($(".min-style").length > 0 && win_w < 768) {
-
-			$(".min-style").niceScroll({
-				mousescrollstep: 60,
-				cursorcolor: "#959595",
-		        cursorborder: "0px solid #fff",
-			});
-		}
-
-
-	// About Us
-		if($(".med-style").length > 0) {
-
-			$(".med-style").niceScroll({
-				mousescrollstep: 60,
-				cursorcolor: "#959595",
-		        cursorborder: "0px solid #fff",
-			});
-		}
-
 
 	// Contact Us
 
@@ -1071,75 +1050,6 @@ $(document).ready(function() {
 				}
 			});
 
-		// Contact 1
-
-			// Map Initialization
-				if($(".contact-1 .map").length > 0) {
-
-					var height = (win_w < 768)? ($(".contact-1 .content-wrapper").height()+60) : win_h,
-						add = $(".contact-1 .map").attr('data-address') || 'London, United Kindgom';
-
-					$(".contact-1 .map").append('<div class="map-wrapper" id="map"></div>');
-
-					$(".contact-1 .map-wrapper").width(win_w);
-					$(".contact-1 .map-wrapper").height(height);
-
-					$("#map").gMap({
-
-					    address: add,
-					    zoom: 12,
-					    scrollwheel: true,
-					    maptype: 'ROADMAP',
-
-					    controls: {
-					           panControl: false,
-					           zoomControl: true,
-					           mapTypeControl: false,
-					           scaleControl: false,
-					           streetViewControl: false,
-					           overviewMapControl: false
-					    },
-					    markers: [
-					        {
-					            address: add
-					        }
-					    ]
-					});
-				}
-
-			// Scrollbar
-				if($(".contact-1").length > 0){
-
-					if(win_w <= 1400) {
-
-						$(".contact-1").niceScroll({
-							mousescrollstep: 60,
-							cursorcolor: "#959595",
-					        cursorborder: "0px solid #fff",
-						});
-						var wrapper_height = $(".contact-1 .content-wrapper").height();
-						$(".contact-1 .mCSB_inside > .mCSB_container").height(wrapper_height+60);
-					}
-				}
-
-			// Form Close button
-				$(".contact-1 .close").click(function(event) {
-					event.preventDefault();
-
-					$(".contact-1 .content-wrapper").fadeOut(300, function() {
-						$(".contact-1 .form-btn").delay(200).fadeIn(300);
-						$(".contact-1 .map").addClass('active');
-					});
-				});
-
-			// Form Open Button
-				$(".contact-1 .form-btn").click(function(event) {
-					event.preventDefault();
-
-					$(this).fadeOut(300);
-					$(".contact-1 .map").removeClass('active');
-					$(".contact-1 .content-wrapper").fadeIn(300);
-				});
 
 		// Contact 2
 
