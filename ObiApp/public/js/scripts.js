@@ -558,87 +558,6 @@ $(document).ready(function() {
 
 	// Slideshow - Vertical & Horizontal Nav
 
-		// Navigation - Bullet click
-		$(".full-screen.flexslider .nav .bullets a").click(function(event) {
-
-			event.preventDefault();
-
-			var id = $(this).index(),
-				slider = $(".full-screen.flexslider").data('flexslider');
-
-			if(!$(this).hasClass('active')) {
-
-		    	$(".full-screen.flexslider .nav .bullets a.active").removeClass('active');
-		    	$(this).addClass('active');
-
-		    	$(".full-screen.flexslider").flexslider('pause');
-		    	slider.flexAnimate(id);
-
-				$(".full-screen.flexslider .pause").fadeOut(200,function(){
-					$(".full-screen.flexslider .play").fadeIn(200);
-				});
-			}
-		});
-
-
-	// Horizontal - Normal
-		if($(".gallery-h.normal").length > 0) {
-
-			// On Image Hover
-			$('.gallery-h.normal .gallery .container .img a').hover(function() {
-
-				$(this).parent().addClass('active');
-				$(this).parent().parent().addClass('hovered');
-			}, function() {
-
-				$(this).parent().removeClass('active');
-				$(this).parent().parent().removeClass('hovered');
-			});
-
-			// On Image Click
-			$(".gallery-h.normal .container .img a").magnificPopup({
-
-			    type: 'image',
-			    closeOnContentClick: true,
-			    mainClass: 'mfp-fade',
-			    preloader: true,
-
-			    gallery: {
-				    enabled: true,
-					navigateByImgClick: true,
-					arrowMarkup: '<button title="%title%" type="button" class="arrow-%dir%"></button>', // markup of an arrow button
-					tPrev: 'Previous (Left arrow key)', // title for left button
-					tNext: 'Next (Right arrow key)', // title for right button
-					tCounter: '<span class="mfp-counter">%curr% of %total%</span>' // markup of counter
-				}
-			});
-
-			// Navigation Controls - Previous
-			$(".gallery-h.normal .nav .prev").click(function(event) {
-				event.preventDefault();
-
-				var scroll_amount = 400;
-
-				if(win_w <= 768) {
-					scroll_amount = win_w - 30;
-				}
-				$(".gallery-h.normal .gallery").getNiceScroll(0).doScrollLeftBy(scroll_amount);
-			});
-
-			// Navigation Controls - Next
-			$(".gallery-h.normal .nav .next").click(function(event) {
-				event.preventDefault();
-
-				var scroll_amount = 400 * (-1);
-
-				if(win_w <= 768) {
-					scroll_amount = win_w - 35;
-				}
-
-				$(".gallery-h.normal .gallery").getNiceScroll(0).doScrollLeftBy(scroll_amount);
-			});
-		}
-
 
 	// Horizontal - Centered
 		if($(".gallery-h.centered").length > 0) {
@@ -743,27 +662,6 @@ $(document).ready(function() {
 						});
 					}
 				}
-			});
-		}
-
-
-	// Kenburns
-		if($(".full-screen.flexslider.kenburns").length > 0) {
-
-			var gallery_k_slideshow_speed = 6000,
-				gallery_k_animation_speed = 2000;
-
-			$(".full-screen.flexslider.kenburns").flexslider({
-
-			    prevText: "",
-			    nextText: "",
-			    animation: 'fade',
-			    easing: "linear",
-			    slideshow: true,
-			    slideshowSpeed: gallery_k_slideshow_speed,
-			    animationSpeed: gallery_k_animation_speed,
-			    controlNav: false,
-			    directionNav: false
 			});
 		}
 
