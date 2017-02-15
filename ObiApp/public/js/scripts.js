@@ -415,7 +415,7 @@ $(document).ready(function() {
 
 							render();
 
-							$("body > .loader").delay(1500).fadeOut(200, function() {
+							$("body > .loader").delay(100).fadeOut(200, function() {
 					    		$("body").addClass('loaded');
 					    	});
 						}
@@ -956,7 +956,7 @@ $(document).ready(function() {
 			// Map Initialization
 				if($(".contact-2 .map").length > 0) {
 
-					var	add = $(".contact-2 .map").attr('data-address') || 'London, United Kindgom';
+					var	add = $(".contact-2 .map").attr('data-address') || 'Obi Obi, Australia';
 
 					$(".map-content").gMap({
 
