@@ -379,7 +379,7 @@ $(document).ready(function() {
 			else if($(".gallery-h.centered").length > 0) {
 
 	    		$("img.lazy").lazyload({
-	    			threshold : 1000,
+	    			threshold : 400,
 				    effect : "fadeIn",
 				    container : $(".gallery .container"),
 				    skip_invisible : true
