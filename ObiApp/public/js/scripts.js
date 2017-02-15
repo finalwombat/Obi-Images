@@ -379,7 +379,7 @@ $(document).ready(function() {
 			else if($(".gallery-h.centered").length > 0) {
 
 	    		$("img.lazy").lazyload({
-	    			threshold : 400,
+	    			threshold : 1000,
 				    effect : "fadeIn",
 				    container : $(".gallery .container"),
 				    skip_invisible : true
@@ -399,9 +399,11 @@ $(document).ready(function() {
 			if(imgs <= 0) {
 				render();
 
-				$("body > .loader").delay(1500).fadeOut(200, function() {
+				$("body > .loader").delay(100).fadeOut(200, function() {
 		    		$("body").addClass('loaded');
+						$(window).resize();
 		    	});
+
 			}
 			else {
 				$("img:not('.lazy')").each(function(index, el) {
