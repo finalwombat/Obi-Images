@@ -52,6 +52,13 @@
   var configFirebaseUi = function(){
     // FirebaseUI config.
     var uiConfig = {
+      callbacks: {
+        signInSuccess: function(currentUser, credential, redirectUrl){
+          handleSignedInUser(currentUser);
+          // Do not redirect
+          return false;
+        }
+      },
       signInSuccessUrl: '/admin',
       signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
@@ -91,5 +98,18 @@
         menuLogin.href = '/login';
       }
     });
+  }
+
+  var handleSignedInUser = function(user){
+    if(user){
+      window.location.href =  '/admin/'+ user.uid;
+    // $.get('/admin/:uid', {uid: user.uid}).done(function(data){
+    //      console.log('done!!');
+    //      $.html(data);
+    //    });
+
+    } else {
+      console.log('No User!');
+    }
   }
 })()

@@ -1,4 +1,5 @@
 var fs = require('fs');
+var firebaseAdmin = require('firebase-admin');
 
 
 module.exports = function(app) {
@@ -26,8 +27,17 @@ module.exports = function(app) {
       res.render('login.ejs');
     });
 
-    app.get('/admin', function(req, res){
-      res.render('admin.ejs');
+    app.get('/admin/:uid', function(req, res){
+      var uid = req.params.uid;
+      console.log(req.params);
+      if(uid){
+        console.log(uid)
+        res.render('admin');
+      } else {
+        console.log('no user token');
+        res.redirect('/');
+      }
+
     });
 
     app.get('/:galleryName', function(req, res){
