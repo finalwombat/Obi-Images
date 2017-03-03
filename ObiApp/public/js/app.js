@@ -102,7 +102,13 @@
 
   var handleSignedInUser = function(user){
     if(user){
-      window.location.href =  '/admin/'+ user.uid;
+      firebase.auth().currentUser.getToken(true)
+        .then(function(idToken){
+          window.location.href =  '/admin/'+ idToken;
+        }).catch(function(error){
+          console.log(error);
+        });
+
     // $.get('/admin/:uid', {uid: user.uid}).done(function(data){
     //      console.log('done!!');
     //      $.html(data);
