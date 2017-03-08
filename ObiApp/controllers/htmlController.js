@@ -1,5 +1,12 @@
 var fs = require('fs');
-var firebaseAdmin = require('firebase-admin');
+var url = require('url');
+var firebaseAdmin = require.main.require('firebase-admin');
+var serviceAccount = require('../data/serviceAccountKey.json');
+
+firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(serviceAccount),
+  databaseURL: "https://login-test-27aba.firebaseio.com"
+});
 
 
 module.exports = function(app) {
@@ -27,12 +34,18 @@ module.exports = function(app) {
       res.render('login.ejs');
     });
 
-    app.get('/admin/:uid', function(req, res){
-      var uid = req.params.uid;
-      console.log(req.params);
-      if(uid){
-        console.log(uid)
-        res.render('admin');
+    app.all('/admin/:idToken', function(req, res){
+      var idToken = req.params.idToken;
+      if(idToken){
+        firebaseAdmin.auth().verifyIdToken(idToken)
+          .then(function(decodedToken){
+            console.log(decodedToken);
+            res.render('admin');
+          })
+          .catch(function(err){
+            console.log(err);
+            res.redirect('/login');
+          });
       } else {
         console.log('no user token');
         res.redirect('/');
@@ -40,13 +53,15 @@ module.exports = function(app) {
 
     });
 
-    app.get('/:galleryName', function(req, res){
+    app.get('/index/:galleryName', function(req, res){
       var gallery = getGalleryImages(req.params.galleryName);
       console.log(gallery);
       res.render('index', {
         gallery: gallery[0]
       });
     });
+
+
 }
 
 function getGalleryImages(galleryName){

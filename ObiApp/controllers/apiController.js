@@ -22,5 +22,9 @@ module.exports = function(app) {
         res.redirect('/gallery');
       });
 
-    })
+    });
+
+    app.get('*', function(req, res) {
+      res.redirect('/');
+    });
 }
