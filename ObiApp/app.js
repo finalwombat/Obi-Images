@@ -13,8 +13,10 @@ app.use(express.static(__dirname + '/public'));
 
 htmlController(app);
 apiController(app);
-flickrController(app);
+//flickrController(app);
 
 app.listen(port, function(){
   console.log('app listening on port:', port);
 });
+
+exports = module.exports = app;

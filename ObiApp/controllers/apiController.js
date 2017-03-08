@@ -22,15 +22,12 @@ module.exports = function(app) {
       if(idToken){
         firebaseAdmin.auth().verifyIdToken(idToken)
           .then(function(decodedToken){
-            console.log(decodedToken);
             res.render('admin');
           })
           .catch(function(err){
-            console.log(err);
             res.redirect('/login');
           });
       } else {
-        console.log('no user token');
         res.redirect('/');
       }
 
