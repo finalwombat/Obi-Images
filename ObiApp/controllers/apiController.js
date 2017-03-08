@@ -1,26 +1,38 @@
 var fs = require('fs');
 var images = fs.readFileSync( './data/images.json', 'utf-8');
 var flickrController = require('./flickrController');
+var firebaseAdmin = require.main.require('firebase-admin');
+var serviceAccount = require('../data/serviceAccountKey.json');
+
+firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(serviceAccount),
+  databaseURL: "https://login-test-27aba.firebaseio.com"
+});
 
 module.exports = function(app) {
-    app.get('/galleries', function(req, res) {
-        //console.log(images);
-        res.json(images);
-    });
-
-    app.get('/album:title', function(req, res) {
-        imagesObj = JSON.parse(images);
-        console.log(req.params.title);
-        var album = imagesObj.filter(function(album){
-            return album.title === req.params.title;
-        })
-        res.json(JSON.stringify(album[0]));
-    });
 
     app.get('/update/FlickerImages', function(req, res){
       flickrController(app, function(){
         res.redirect('/gallery');
       });
+
+    });
+    app.all('/admin/:idToken', function(req, res){
+      var idToken = req.params.idToken;
+      if(idToken){
+        firebaseAdmin.auth().verifyIdToken(idToken)
+          .then(function(decodedToken){
+            console.log(decodedToken);
+            res.render('admin');
+          })
+          .catch(function(err){
+            console.log(err);
+            res.redirect('/login');
+          });
+      } else {
+        console.log('no user token');
+        res.redirect('/');
+      }
 
     });
 
