@@ -14,7 +14,10 @@
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "firebase-admin": "^4.1.1",
-    "flickrapi": "^0.4.2",
+    "flickrapi": "^0.4.2"
+  },
+  "devDependencies": {
+    "supertest": "^3.0.0",
     "tape": "^4.6.3"
   }
 }
