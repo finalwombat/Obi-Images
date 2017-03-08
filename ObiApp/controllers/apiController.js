@@ -1,5 +1,5 @@
 var fs = require('fs');
-var images = fs.readFileSync( './controllers/images.json', 'utf-8');
+var images = fs.readFileSync( './data/images.json', 'utf-8');
 var flickrController = require('./flickrController');
 
 module.exports = function(app) {

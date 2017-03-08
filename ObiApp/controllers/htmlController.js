@@ -65,7 +65,7 @@ module.exports = function(app) {
 }
 
 function getGalleryImages(galleryName){
-  var images = fs.readFileSync( './controllers/images.json', 'utf-8');
+  var images = fs.readFileSync( './data/images.json', 'utf-8');
   if(!galleryName){galleryName = 'featured'};
 
   var galleries = JSON.parse(images);
@@ -76,7 +76,7 @@ function getGalleryImages(galleryName){
 }
 
 function getThumbnailsForGalleries(){
-  var images = fs.readFileSync( './controllers/images.json', 'utf-8');
+  var images = fs.readFileSync( './data/images.json', 'utf-8');
   var galleries = JSON.parse(images);
 
   var thumbnails = galleries.map(function(gallery){
