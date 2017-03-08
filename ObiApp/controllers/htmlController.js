@@ -22,9 +22,14 @@ module.exports = function(app) {
     app.get('/index/:galleryName', function(req, res){
       var gallery = getGalleryImages(req.params.galleryName);
       console.log(gallery);
-      res.render('index', {
-        gallery: gallery[0]
-      });
+      if(gallery.length > 0){
+        res.render('index', {
+          gallery: gallery[0]
+        });
+      } else {
+        res.redirect('/gallery');
+      }
+
     });
 
     app.get('/contact', function(req, res){
