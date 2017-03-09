@@ -104,15 +104,11 @@
     if(user){
       firebase.auth().currentUser.getToken(true)
         .then(function(idToken){
-          window.location.href =  '/admin/'+ idToken;
+          document.cookie = "idToken=" + idToken;
+          window.location.href =  '/admin';
         }).catch(function(error){
           console.log(error);
         });
-
-    // $.get('/admin/:uid', {uid: user.uid}).done(function(data){
-    //      console.log('done!!');
-    //      $.html(data);
-    //    });
 
     } else {
       console.log('No User!');
