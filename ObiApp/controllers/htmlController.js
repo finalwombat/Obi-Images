@@ -1,4 +1,5 @@
 var fs = require('fs');
+var images = fs.readFileSync( './data/images.json', 'utf-8');
 
 
 module.exports = function(app) {
@@ -18,6 +19,19 @@ module.exports = function(app) {
       });
     });
 
+    app.get('/index/:galleryName', function(req, res){
+      var gallery = getGalleryImages(req.params.galleryName);
+      console.log(gallery);
+      if(gallery.length > 0){
+        res.render('index', {
+          gallery: gallery[0]
+        });
+      } else {
+        res.redirect('/gallery');
+      }
+
+    });
+
     app.get('/contact', function(req, res){
       res.render('contact.ejs');
     });
@@ -26,37 +40,25 @@ module.exports = function(app) {
       res.render('login.ejs');
     });
 
-    app.get('/admin', function(req, res){
-      res.render('admin.ejs');
+  }
+
+
+  function getGalleryImages(galleryName){
+    if(!galleryName){galleryName = 'featured'};
+
+    var galleries = JSON.parse(images);
+    var album = galleries.filter(function(album){
+        return album.title === galleryName;
+    })
+    return album;
+  }
+
+  function getThumbnailsForGalleries(){
+    var galleries = JSON.parse(images);
+
+    var thumbnails = galleries.map(function(gallery){
+      return {title: gallery.title, img: gallery.photos[1]};
     });
 
-    app.get('/:galleryName', function(req, res){
-      var gallery = getGalleryImages(req.params.galleryName);
-      console.log(gallery);
-      res.render('index', {
-        gallery: gallery[0]
-      });
-    });
-}
-
-function getGalleryImages(galleryName){
-  var images = fs.readFileSync( './controllers/images.json', 'utf-8');
-  if(!galleryName){galleryName = 'featured'};
-
-  var galleries = JSON.parse(images);
-  var album = galleries.filter(function(album){
-      return album.title === galleryName;
-  })
-  return album;
-}
-
-function getThumbnailsForGalleries(){
-  var images = fs.readFileSync( './controllers/images.json', 'utf-8');
-  var galleries = JSON.parse(images);
-
-  var thumbnails = galleries.map(function(gallery){
-    return {title: gallery.title, img: gallery.photos[1]};
-  });
-
-  return thumbnails;
-}
+    return thumbnails;
+  }

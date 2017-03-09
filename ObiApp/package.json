@@ -11,8 +11,14 @@
   "dependencies": {
     "async": "^2.0.0-rc.3",
     "body-parser": "^1.15.0",
+    "cookie": "^0.3.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "firebase-admin": "^4.1.1",
     "flickrapi": "^0.4.2"
+  },
+  "devDependencies": {
+    "supertest": "^3.0.0",
+    "tape": "^4.6.3"
   }
 }
